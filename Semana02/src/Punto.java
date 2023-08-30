@@ -2,15 +2,7 @@
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 
-/**
- *
- * @author alumno
- */
 public class Punto {
     private int coordenada_x;
     private int coordenada_y;
@@ -53,6 +45,21 @@ public class Punto {
         
         double distancia= sqrt(pow(punto1CoordenadaX-punto2CoordenadaX,2)+pow(punto1CoordenadaY-punto2CoordenadaY,2));
         return distancia;
+    }
+    
+    public Punto calcularPuntoMasCercano(Punto[] otrosPuntos){
+        Punto _masCercanoPunto = null;
+        double minDistancia = Double.MAX_VALUE;
+        double actualDistancia;
+        
+        for (int i = 0; i < otrosPuntos.length; i++) {
+            actualDistancia = this.getDistancia(otrosPuntos[i]);
+            if(actualDistancia <= minDistancia){
+                minDistancia=actualDistancia;
+                _masCercanoPunto = otrosPuntos[i];
+            }    
+        }
+        return _masCercanoPunto;
     }
 
     @Override

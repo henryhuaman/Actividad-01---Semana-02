@@ -10,7 +10,7 @@ import static java.lang.Math.sqrt;
  *
  * @author alumno
  */
-public class Triangulo extends FiguraGeometrica{
+public class Triangulo extends FiguraGeometrica implements Shape{
     String nombre;
     Punto punto1;
     Punto punto2;
@@ -60,10 +60,7 @@ public class Triangulo extends FiguraGeometrica{
         this.nombre = nombre;
     }
     
-    @Override
-    public String toString() {
-        return "Triángulo: " + getNombre()+ "tiene 3 Puntos:"+ getPunto1().toString()+","+getPunto2().toString()+ ","+getPunto3().toString();             
-    }
+    
 
     double calcularAreaFigura() {
         double s=(this.punto1.getDistancia(punto2)+this.punto2.getDistancia(punto3)+this.punto3.getDistancia(punto1))/2;
@@ -78,8 +75,15 @@ public class Triangulo extends FiguraGeometrica{
         }else{
             return false;
         }
-        
-        
+    }
+    
+    public double obtenerPerimetro() {
+        return punto1.getDistancia(punto2)+punto2.getDistancia(punto3)+punto3.getDistancia(punto1);
+    }
+    
+    @Override
+    public String toString() {
+        return "Triángulo: " + getNombre()+ "tiene 3 Puntos:"+ getPunto1().toString()+","+getPunto2().toString()+ ","+getPunto3().toString()+", perimetro=" + obtenerPerimetro()+" }";             
     }
     
 }

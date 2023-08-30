@@ -18,6 +18,7 @@ public abstract class FiguraGeometrica {
         this.nombre = nombre;
     }
     
+    
     abstract double calcularAreaFigura();
     abstract boolean esRegular();
        
